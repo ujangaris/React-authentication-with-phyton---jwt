@@ -2,29 +2,41 @@ import React, { useEffect, useState } from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import axios from 'axios'
+import NotAuthor from './NotAuthor'
 
 const Profile = () => {
   // pasang deault endpoint
   const API_URL = 'http://localhost:5000'
   // hooks profile
   const [profile, setProfile] = useState({})
+  // hooks authentication
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
 
   // useEffect menampilkan data profile
   useEffect(() => {
     // pasang token yang login
     const token = localStorage.getItem('token')
-    axios
-      .get(API_URL + '/profile', {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => {
-        setProfile(res.data.data)
-        console.log(res.data)
-      })
-      .catch((err) => console.error(err))
+    // pasang authenticated
+    if (token) {
+      setIsAuthenticated(true)
+      axios
+        .get(API_URL + '/profile', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          setProfile(res.data.data)
+          console.log(res.data)
+        })
+        .catch((err) => console.error(err))
+    }
   }, [])
+  // tampilan untuk yang memaksa mengakses profile
+  if (!isAuthenticated) {
+    // import dan pasang NotAuthor
+    return <NotAuthor />
+  }
   return (
     <>
       <Navbar />

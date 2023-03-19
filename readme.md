@@ -87,3 +87,19 @@
     5.  pengujian pada browser:
         - setelah behasil login
         - jika setup yang kita lakukan berhasil akan akan ter-redirect ke halaman profile
+
+## Penggunaan Middleware untuk Proteksi Halaman pada ReactJS
+
+    Todo:
+    1.  components/Profile.jsx
+        - hooks authentication
+        - pasang authenticated
+        - tampilan untuk yang memaksa mengakses profile
+        - import dan pasang NotAuthor
+    2.  components/NotAuthor.jsx
+        - functional NotAuthor
+    3.  auth/Login.jsx
+        - hadnle ketika user sudah login tidak bisa akses halaman login
+    4.  pengujian pada browser:
+        - setelah behasil logout coba akses halaman profile : http://localhost:5173/profile
+        - jika setup yang kita lakukan berhasil akan akan tanpil page NotAuthorize

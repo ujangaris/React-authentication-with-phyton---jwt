@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
@@ -35,6 +35,12 @@ const Login = () => {
       setError(error.response.data.message)
     }
   }
+  // hadnle ketika user sudah login tidak bisa akses halaman login
+  useEffect(() => {
+    if (localStorage.getItem('user')) {
+      navigate('/')
+    }
+  }, [])
   return (
     <div>
       <Navbar />
