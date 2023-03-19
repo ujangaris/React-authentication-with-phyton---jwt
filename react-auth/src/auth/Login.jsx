@@ -30,7 +30,7 @@ const Login = () => {
       localStorage.setItem('user', JSON.stringify(user))
       alert('Login Berhasil')
       setLoading(false)
-      navigate('/')
+      navigate('/profile')
     } catch (error) {
       setError(error.response.data.message)
     }

@@ -67,4 +67,23 @@
     2.  pengujian pada browser:
         - setelah behasil login klik dropdown menu lalu klik logout
         - jika setup yang kita lakukan berhasil akan menampilkan button login dan register
-        
+
+## Profile Page
+
+    Todo:
+    1.  components/Navbar.jsx
+        - pasang path '/profile'
+    2.  components/Profile.jsx
+        - functional component Profile
+        - pasang deault endpoint
+        - hooks profile
+        - useEffect menampilkan data profile
+        - pasang token yang login
+        - buat kondisi jika gambar  ada dan tidak ada pada database
+    3.  App.jsx
+        - import dan pasang Profile path
+    4.  auth/Login.jsx
+        - redirect to profile dengan useNavigate()
+    5.  pengujian pada browser:
+        - setelah behasil login
+        - jika setup yang kita lakukan berhasil akan akan ter-redirect ke halaman profile
