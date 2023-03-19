@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [user, setUser] = useState(null)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('user'))
@@ -14,7 +16,15 @@ const Navbar = () => {
       setUser(null)
     }
   }, [])
-
+  // handleLogout
+  const handleLogout = (e) => {
+    e.preventDefault()
+    localStorage.removeItem('token')
+    localStorage.removeItem('user')
+    setIsLoggedIn(false)
+    alert('Anda telah logout!')
+    navigate('/')
+  }
   return (
     <>
       <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
@@ -64,7 +74,10 @@ const Navbar = () => {
                     </a>
                     <ul className='dropdown-menu'>
                       <li>
-                        <a className='dropdown-item text-center' href='#'>
+                        <a
+                          className='dropdown-item text-center'
+                          onClick={handleLogout}
+                        >
                           Logout
                         </a>
                       </li>

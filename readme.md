@@ -58,3 +58,13 @@
           akan diarahkan kehalaman : http://localhost:5173/login
         - lakukan pengisian form login dengan username dan password yang terdaftar dan klik button login
         - jika setup yang kita lakukan berhasil akan diarahkan kehalaman homepage
+
+## Logout
+
+    Todo:
+    1.  Navbar
+        - handleLogout
+    2.  pengujian pada browser:
+        - setelah behasil login klik dropdown menu lalu klik logout
+        - jika setup yang kita lakukan berhasil akan menampilkan button login dan register
+        
