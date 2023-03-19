@@ -44,3 +44,17 @@
           akan diarahkan kehalaman : http://localhost:5173/register
         - lakukan pengisian form register dan klik button egister
         - jika setup yang kita lakukan berhasil akan diarahkan kehalaman homepage
+
+## isLoggedIn & menampilkan nama user yang login
+
+    Todo:
+    1.  Navbar
+        - memasang hooks
+        - useEffect untuk mengechek jikasudah login apa belum
+        - pasang logig isLoggedIn pada menu (profile dam username)
+        - menampilkan data user yang login dengan mencetak namanya : {user.name}
+    2.  pengujian pada browser:
+        - klik menu login
+          akan diarahkan kehalaman : http://localhost:5173/login
+        - lakukan pengisian form login dengan username dan password yang terdaftar dan klik button login
+        - jika setup yang kita lakukan berhasil akan diarahkan kehalaman homepage

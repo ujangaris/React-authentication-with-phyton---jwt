@@ -1,6 +1,20 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const Navbar = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [user, setUser] = useState(null)
+
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem('user'))
+    if (storedUser !== '' && storedUser !== null) {
+      setIsLoggedIn(true)
+      setUser(storedUser)
+    } else {
+      setIsLoggedIn(false)
+      setUser(null)
+    }
+  }, [])
+
   return (
     <>
       <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
@@ -29,40 +43,49 @@ const Navbar = () => {
                   Home
                 </a>
               </li>
-              <li className='nav-item'>
-                <a className='nav-link' href='#'>
-                  profile
-                </a>
-              </li>
 
-              <li className='nav-item dropdown'>
-                <a
-                  className='nav-link dropdown-toggle'
-                  href='#'
-                  role='button'
-                  data-bs-toggle='dropdown'
-                  aria-expanded='false'
-                >
-                  Ujang Arisandi
-                </a>
-                <ul className='dropdown-menu'>
-                  <li>
-                    <a className='dropdown-item text-center' href='#'>
-                      Logout
+              {isLoggedIn && (
+                <>
+                  <li className='nav-item'>
+                    <a className='nav-link' href='#'>
+                      Profile
                     </a>
                   </li>
-                </ul>
-              </li>
-              <li className='nav-item mx-2'>
-                <a className='btn btn-outline-light' href='/login'>
-                  Login
-                </a>
-              </li>
-              <li className='nav-item'>
-                <a className='btn btn-outline-light' href='/register'>
-                  Register
-                </a>
-              </li>
+
+                  <li className='nav-item dropdown'>
+                    <a
+                      className='nav-link dropdown-toggle'
+                      href='#'
+                      role='button'
+                      data-bs-toggle='dropdown'
+                      aria-expanded='false'
+                    >
+                      {user.name}
+                    </a>
+                    <ul className='dropdown-menu'>
+                      <li>
+                        <a className='dropdown-item text-center' href='#'>
+                          Logout
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                </>
+              )}
+              {!isLoggedIn && (
+                <>
+                  <li className='nav-item mx-2'>
+                    <a className='btn btn-outline-light' href='/login'>
+                      Login
+                    </a>
+                  </li>
+                  <li className='nav-item'>
+                    <a className='btn btn-outline-light' href='/register'>
+                      Register
+                    </a>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </div>
