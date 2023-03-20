@@ -126,3 +126,12 @@
           akan ada notifkasi Please enter a Username & Please enter a Password
         - jika salah satu di isi trus tekan login maka yang tidak teisi tersebut muncul di pesan toastify
         - jika data yang dimasukan tidak sama dengan di database akan ada notifikasi invalid username or password
+
+## Handle user access path register setelah berhasil login
+
+    Todo:
+    1.  auth/Register.jsx
+        - handle ketika user sudah login tidak bisa masuk kehalaman Reegister
+    2.  pengujian pada browser:
+        - ketika sudah login, coba akses halaman register: http://localhost:5173/register
+        - jika setup yang kita lakukan berhasil akan di redirect ke halaman home

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
@@ -44,6 +44,12 @@ const Register = () => {
       console.log(error.response.data)
     }
   }
+  // handle ketika user sudah login tidak bisa masuk kehalaman Reegister
+  useEffect(() => {
+    if (localStorage.getItem('user')) {
+      navigate('/')
+    }
+  }, [navigate])
 
   return (
     <div>
