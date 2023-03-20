@@ -32,11 +32,18 @@ const Profile = () => {
         .catch((err) => console.error(err))
     }
   }, [])
+  // stitle profile = set document title to 'Profile' + name
+  useEffect(() => {
+    if (profile && profile.name) {
+      document.title = 'Profile ' + profile.name
+    }
+  }, [profile])
   // tampilan untuk yang memaksa mengakses profile
   if (!isAuthenticated) {
     // import dan pasang NotAuthor
     return <NotAuthor />
   }
+
   return (
     <>
       <Navbar />

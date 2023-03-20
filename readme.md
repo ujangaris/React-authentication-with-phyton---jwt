@@ -135,3 +135,19 @@
     2.  pengujian pada browser:
         - ketika sudah login, coba akses halaman register: http://localhost:5173/register
         - jika setup yang kita lakukan berhasil akan di redirect ke halaman home
+
+## Title pada setiap halaman
+
+    Todo:
+    1.  auth/Register.jsx
+        - title Register
+    2.  auth/login.jsx
+        - title Login
+    3.  components/Profile.jsx
+        - stitle profile = set document title to 'Profile' + name
+    4.  components/NotAuthor.jsx
+        - title NotAuthorize!
+    5.  pengujian pada browser:
+        - klik register => nama title Register
+        - klik login => nama title Login
+        - klik profile => nama title Profile + nama user yang login

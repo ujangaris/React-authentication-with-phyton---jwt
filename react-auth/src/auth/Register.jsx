@@ -39,13 +39,15 @@ const Register = () => {
       console.log(response.data)
       alert('Register Berhasil')
       setLoading(false)
-      navigate('/')
+      navigate('/login')
     } catch (error) {
       console.log(error.response.data)
     }
   }
   // handle ketika user sudah login tidak bisa masuk kehalaman Reegister
   useEffect(() => {
+    // title register
+    document.title = 'Register'
     if (localStorage.getItem('user')) {
       navigate('/')
     }

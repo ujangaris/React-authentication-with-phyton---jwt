@@ -51,7 +51,7 @@ const Login = () => {
         alert('Login Berhasil')
         setLoading(false)
         navigate('/profile')
-        // penambahan code untuk data yang tidak valid 
+        // penambahan code untuk data yang tidak valid
       } catch (error) {
         if (error.response.status === 400) {
           setError('Invalid username or password')
@@ -69,6 +69,8 @@ const Login = () => {
 
   // hadnle ketika user sudah login tidak bisa akses halaman login
   useEffect(() => {
+    // title login
+    document.title = 'Login'
     if (localStorage.getItem('user')) {
       navigate('/')
     }

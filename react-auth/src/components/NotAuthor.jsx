@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 const NotAuthor = () => {
+  useEffect(() => {
+    document.title = 'Not Authorize!'
+  })
   return (
     <div>
       <div
@@ -12,7 +15,8 @@ const NotAuthor = () => {
             <div className='card border-0 shadow-lg'>
               <div className='card-body text-center'>
                 <h1 className='mb-4'>
-                  You are not authorized to access this page.
+                  <span style={{ color: 'red' }}>Upps..!! </span>You are not
+                  authorized to access this page.
                 </h1>
                 <p className='text-muted'>
                   Please <a href='/login'>login</a> to continue.

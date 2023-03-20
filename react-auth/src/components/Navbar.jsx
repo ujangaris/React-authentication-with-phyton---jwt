@@ -29,7 +29,7 @@ const Navbar = () => {
     <>
       <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
         <div className='container my-2 '>
-          <a className='navbar-brand' href='#'>
+          <a className='navbar-brand' href='/'>
             Authorization
           </a>
           <button
