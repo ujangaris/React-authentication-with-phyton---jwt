@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Footer from '../components/Footer'
+import { toast } from 'react-toastify'
 
 const Login = () => {
   // deklarasi hooks
@@ -11,30 +12,61 @@ const Login = () => {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
+
+  // buat validasi username and password
+  const validate = () => {
+    let result = true
+    if (username === '' || username === null) {
+      result = false
+      toast.warning('Please enter a Username')
+    }
+    if (password === '' || password === null) {
+      result = false
+      toast.warning('Please enter a Password')
+    }
+    return result
+  }
+
   // pasang handleLogin
   const handleLogin = async (e) => {
     e.preventDefault()
-    // pasang setLoading untuk button
-    setLoading(true)
-    try {
-      const response = await axios.post(
-        'http://localhost:5000/auth/login/user',
-        {
-          username,
-          password,
+    // panggil fungsi validasi
+    const isValid = validate()
+    if (isValid) {
+      // pasang setLoading untuk button bernilai true
+      setLoading(true)
+
+      try {
+        const response = await axios.post(
+          'http://localhost:5000/auth/login/user',
+          {
+            username,
+            password,
+          }
+        )
+        //   inisialisasi  user dan token  agar lebih dipanggil
+        const { user, token } = response.data.Data
+        localStorage.setItem('token', token)
+        localStorage.setItem('user', JSON.stringify(user))
+        alert('Login Berhasil')
+        setLoading(false)
+        navigate('/profile')
+        // penambahan code untuk data yang tidak valid 
+      } catch (error) {
+        if (error.response.status === 400) {
+          setError('Invalid username or password')
+          toast.error('Invalid username or password')
+        } else {
+          // jika kesalahan berasal dari API & bukan dari username & password
+          setError(error.response.data.message)
+          toast.error(error.response.data.message)
         }
-      )
-      //   inisialisasi  user dan token  agar lebih dipanggil
-      const { user, token } = response.data.Data
-      localStorage.setItem('token', token)
-      localStorage.setItem('user', JSON.stringify(user))
-      alert('Login Berhasil')
-      setLoading(false)
-      navigate('/profile')
-    } catch (error) {
-      setError(error.response.data.message)
+        // pasang setLogin ketika user salah memasukan email atau password
+        setLoading(false)
+      }
     }
   }
+
   // hadnle ketika user sudah login tidak bisa akses halaman login
   useEffect(() => {
     if (localStorage.getItem('user')) {

@@ -103,3 +103,26 @@
     4.  pengujian pada browser:
         - setelah behasil logout coba akses halaman profile : http://localhost:5173/profile
         - jika setup yang kita lakukan berhasil akan akan tanpil page NotAuthorize
+
+## Handle data kosong dan tidak valid pada Login
+
+    Todo:
+    1.  install Toastify
+        - npm i react-toastify
+        - docs : https://www.npmjs.com/package/react-toastify
+    2.  App.jsx
+        - import dan pasang ToastifyContainer
+        - docs toastify : https://fkhadra.github.io/react-toastify/introduction/
+    3.  auth/Login.jsx
+        - buat validasi username and password
+            * panggil fungsi validasi
+            * pasang setLoading untuk button bernilai true
+        - penambahan code untuk data yang tidak valid
+            * jika kesalahan berasal dari API & bukan dari username & password
+            * pasang setLogin ketika user salah memasukan email atau password
+    4.  pengujian pada browser:
+        - pada halaman login: http://localhost:5173/login
+        - kosongkan form dan lakukan klik login, jika setup yang kita buat berhasil
+          akan ada notifkasi Please enter a Username & Please enter a Password
+        - jika salah satu di isi trus tekan login maka yang tidak teisi tersebut muncul di pesan toastify
+        - jika data yang dimasukan tidak sama dengan di database akan ada notifikasi invalid username or password
