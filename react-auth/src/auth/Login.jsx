@@ -48,7 +48,9 @@ const Login = () => {
         const { user, token } = response.data.Data
         localStorage.setItem('token', token)
         localStorage.setItem('user', JSON.stringify(user))
-        alert('Login Berhasil')
+        // alert('Login Berhasil')
+        // pasang toastyfy
+        toast.success('Login Berhasil!')
         setLoading(false)
         navigate('/profile')
         // penambahan code untuk data yang tidak valid

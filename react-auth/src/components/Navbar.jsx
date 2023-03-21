@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [user, setUser] = useState(null)
   const navigate = useNavigate()
+  // pasang usLocation dari react-router-dom
+  const location = useLocation()
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('user'))
@@ -22,7 +25,9 @@ const Navbar = () => {
     localStorage.removeItem('token')
     localStorage.removeItem('user')
     setIsLoggedIn(false)
-    alert('Anda telah logout!')
+    // alert('Anda telah logout!')
+    // pasang toastify
+    toast.info('Anda telah logout!')
     navigate('/')
   }
   return (
@@ -49,7 +54,14 @@ const Navbar = () => {
           >
             <ul className='navbar-nav'>
               <li className='nav-item'>
-                <a className='nav-link active' aria-current='page' href='/'>
+                <a
+                  // gunakan location untuk menu home & profile
+                  className={`nav-link ${
+                    location.pathname === '/' ? 'active' : ''
+                  } `}
+                  aria-current='page'
+                  href='/'
+                >
                   Home
                 </a>
               </li>
@@ -57,7 +69,12 @@ const Navbar = () => {
               {isLoggedIn && (
                 <>
                   <li className='nav-item'>
-                    <a className='nav-link' href='/profile'>
+                    <a
+                      className={`nav-link ${
+                        location.pathname === '/profile' ? 'active' : ''
+                      }`}
+                      href='/profile'
+                    >
                       Profile
                     </a>
                   </li>

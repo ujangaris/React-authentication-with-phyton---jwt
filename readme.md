@@ -151,3 +151,13 @@
         - klik register => nama title Register
         - klik login => nama title Login
         - klik profile => nama title Profile + nama user yang login
+
+## Menu active stiap halaman & memasang toastify
+
+    Todo:
+    1.  components/Navbar.jsx
+        - pasang usLocation dari react-router-dom
+        - gunakan location untuk menu home & profile
+        - pasang toastify
+    2.  auth/Login.jsx
+        - pasang toastify
