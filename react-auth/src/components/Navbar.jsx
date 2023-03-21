@@ -78,6 +78,16 @@ const Navbar = () => {
                       Profile
                     </a>
                   </li>
+                  <li className='nav-item'>
+                    <a
+                      className={`nav-link ${
+                        location.pathname === '/users' ? 'active' : ''
+                      }`}
+                      href='/users'
+                    >
+                      Users
+                    </a>
+                  </li>
 
                   <li className='nav-item dropdown'>
                     <a

@@ -169,3 +169,17 @@
         - design home
     2.  auth/Login.jsx
         - design logini
+
+## User page
+
+    Todo:
+    1.  components/Users.jsx
+        - table users
+    2.  App.jsx
+        - import dan pasang Users
+    3.  Navbar.jsx
+        - pasang menu users
+    4.  pengujian pada browser:
+        setelah berhasil login klik menu users, akan diarahkan ke page users
+        jika setup yang kita lakukan berhasil data seluruh users akan tampil 
+        pada tabel users

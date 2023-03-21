@@ -7,6 +7,7 @@ import Home from './components/Home'
 import Login from './auth/Login'
 import Register from './auth/Register'
 import Profile from './components/Profile'
+import Users from './components/Users'
 import 'react-toastify/dist/ReactToastify.css'
 import { ToastContainer } from 'react-toastify'
 function App() {
@@ -31,6 +32,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/profile' element={<Profile />} />
+        <Route path='/users' element={<Users />} />
       </Routes>
     </BrowserRouter>
   )
