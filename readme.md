@@ -181,5 +181,18 @@
         - pasang menu users
     4.  pengujian pada browser:
         setelah berhasil login klik menu users, akan diarahkan ke page users
-        jika setup yang kita lakukan berhasil data seluruh users akan tampil 
+        jika setup yang kita lakukan berhasil data seluruh users akan tampil
         pada tabel users
+
+## Search users
+
+    Todo:
+    1.  components/Users.jsx
+        - hooks untuk seacrh
+        - pasang on change
+        - pasang filter
+    2. Pengujian pada browser:
+        - setelah berhasil login klik menu users, akan diarahkan ke page users
+          dana seluruh users akan tampil pada tabel users,
+        - kemudian coba masukan nama pada serach, jika setup yang kita lakukan
+          berhasil maka nama yang dicari akan tampil.

@@ -5,6 +5,8 @@ import Navbar from './Navbar'
 
 function UsersData() {
   const [users, setUsers] = useState([])
+  // hooks untuk seacrh
+  const [query, setQuery] = useState('')
 
   useEffect(() => {
     const token = localStorage.getItem('token')
@@ -31,6 +33,8 @@ function UsersData() {
               type='text'
               placeholder='Search user .....'
               className='form-control my-4 w-25 mx-auto'
+              // pasang on change
+              onChange={(e) => setQuery(e.target.value.toLowerCase())}
             />
             <table className='table table-bordered'>
               <thead className='table-dark text-center'>
@@ -44,19 +48,24 @@ function UsersData() {
                 </tr>
               </thead>
               <tbody>
-                {users.map((person, index) => (
-                  <tr key={index} className='text-center'>
-                    <td>{index + 1}</td>
-                    <td>{person.name}</td>
-                    <td>{person.email}</td>
-                    <td>{person.username}</td>
-                    <td>{person.address}</td>
-                    <td>
-                      <Link className='btn btn-outline-success'>Update</Link>
-                      <button className='btn btn-outline-danger'>Delete</button>
-                    </td>
-                  </tr>
-                ))}
+                {/* pasang filter */}
+                {users
+                  .filter((person) => person.name.toLowerCase().includes(query))
+                  .map((person, index) => (
+                    <tr key={index} className='text-center'>
+                      <td>{index + 1}</td>
+                      <td>{person.name}</td>
+                      <td>{person.email}</td>
+                      <td>{person.username}</td>
+                      <td>{person.address}</td>
+                      <td>
+                        <Link className='btn btn-outline-success'>Update</Link>
+                        <button className='btn btn-outline-danger'>
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           </div>
