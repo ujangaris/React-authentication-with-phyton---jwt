@@ -161,3 +161,11 @@
         - pasang toastify
     2.  auth/Login.jsx
         - pasang toastify
+
+## Desain halaman home & login
+
+    Todo:
+    1.  components/Home.jsx
+        - design home
+    2.  auth/Login.jsx
+        - design logini

@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Footer from '../components/Footer'
 import { toast } from 'react-toastify'
-
+import imageLogin from '../assets/images/imageLogin.png'
+import { Link } from 'react-router-dom'
 const Login = () => {
   // deklarasi hooks
   const [username, setUsername] = useState('')
@@ -80,40 +81,58 @@ const Login = () => {
   return (
     <div>
       <Navbar />
-      <div className='container'>
-        <div className='row'>
-          <div className='col-md-6 offset-md-3 login-form'>
-            <div className='card'>
-              <div className='card-header text-center'>Login Form</div>
+      <div className='container mt-5'>
+        <div className='row justify-content-center'>
+          <div className='col-md-10'>
+            <div className='card shadow'>
               <div className='card-body'>
-                <form onSubmit={handleLogin}>
-                  <div className='form-group'>
-                    <label htmlFor='username'>Username:</label>
-                    <input
-                      type='text'
-                      className='form-control'
-                      id='username'
-                      value={username}
-                      onChange={(e) => setUsername(e.target.value)}
+                <div className='row'>
+                  <div className='col-md-5 ps-5'>
+                    <img
+                      src={imageLogin}
+                      alt='Login Image'
+                      style={{ width: '400px', height: '400px' }}
                     />
                   </div>
-                  <div className='form-group my-2'>
-                    <label htmlFor='password'>Password:</label>
-                    <input
-                      type='password'
-                      className='form-control'
-                      id='password'
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                    />
+                  <div className='col-md-5 mx-5 mt-4'>
+                    <form onSubmit={handleLogin} className='ms-5'>
+                      <h1 className='mb-4'>Form Login</h1>
+                      <div className='form-group '>
+                        <label htmlFor='username'>Username:</label>
+                        <input
+                          type='text'
+                          className='form-control'
+                          id='username'
+                          value={username}
+                          onChange={(e) => setUsername(e.target.value)}
+                        />
+                      </div>
+                      <div className='form-group'>
+                        <label htmlFor='password'>Password:</label>
+                        <input
+                          type='password'
+                          className='form-control'
+                          id='password'
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                        />
+                      </div>
+                      <button
+                        type='submit'
+                        className='btn btn-success btn-block mt-4 w-100'
+                      >
+                        {loading ? 'Loading...' : 'Login'}
+                      </button>
+                      <Link
+                        to='/register'
+                        type='submit'
+                        className='btn btn-default btn-outline-dark btn-block mt-4 w-100'
+                      >
+                        {loading ? 'Loading...' : 'Create new account'}
+                      </Link>
+                    </form>
                   </div>
-                  <button
-                    type='submit'
-                    className='btn btn-success btn-block w-100'
-                  >
-                    {loading ? 'Loading...' : 'Login'}
-                  </button>
-                </form>
+                </div>
               </div>
             </div>
           </div>
